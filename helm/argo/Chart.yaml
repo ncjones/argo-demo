@@ -1,0 +1,9 @@
+apiVersion: v2
+name: argo
+description: Argo Configuration
+type: application
+version: 1.0.0
+dependencies:
+- name: argo-workflows
+  version: "~0.1.13"
+  repository: "https://charts.bitnami.com/bitnami"

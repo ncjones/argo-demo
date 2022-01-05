@@ -1,0 +1,6 @@
+dependencies:
+- name: argo-workflows
+  repository: https://charts.bitnami.com/bitnami
+  version: 0.1.13
+digest: sha256:e0696b1d11b887838f4d869e214522579b26a7439807a47f6771122c798dd993
+generated: "2022-01-05T20:37:11.992266+13:00"
