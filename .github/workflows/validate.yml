@@ -26,3 +26,7 @@ jobs:
           kubectl cluster-info
           echo "Pods:"
           kubectl get pods -n kube-system
+      - name: Install Argo
+        run: |
+          ./helm-package.sh --project argo --version 1
+          ./helm-deploy.sh --project argo --version 1
