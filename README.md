@@ -1,20 +1,16 @@
 # Argo Demo
 
 
+## Dependencies
+
+```
+brew install kind kubectl helm
+```
+
 ## Create Kubernetes Cluster
 
-There must be a running Kubernetes cluster available.
-
 ```
-brew install kind
-kind create cluster
-```
-
-OR
-
-```
-brew install k3d
-k3d cluster create mycluster
+kind create cluster --config <(scripts/kind-config.sh)
 ```
 
 
@@ -46,12 +42,6 @@ echo "Bearer $(kubectl get secret -n argo "${secret_name}" -o=jsonpath='{.data.t
 
 ```
 kind delete cluster
-```
-
-OR
-
-```
-k3d cluster delete mycluster
 ```
 
 ### Update Helm Dependencies
