@@ -24,8 +24,8 @@ kind create cluster --config <(scripts/kind-config.sh)
 ## Inspect Argo UI
 
 ```
-kubectl -n argo port-forward deployment/argo-server 2746:2746
-open https://localhost:2746
+kubectl -n argo port-forward svc/argo-argo-workflows-server 2746:80
+open http://localhost:2746
 ```
 
 ## Get Argo Auth Token
