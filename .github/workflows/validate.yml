@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Versions
         run: |
-          echo "Kubectl: $(kubectl version)"
+          echo "Kubectl: $(kubectl version --client)"
           echo "Helm: $(helm version)"
           echo "Kind: $(kind version)"
       - name: Create Cluster
