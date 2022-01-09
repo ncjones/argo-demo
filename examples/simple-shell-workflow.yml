@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: simple-shell-workflow
+  namespace: argo
+spec:
+  entrypoint: main
+  volumes:
+    - name: work
+      hostPath:
+        path: /work
+  templates:
+    - name: main
+      script:
+        image: 'node:14'
+        volumeMounts:
+          - name: work
+            mountPath: /work
+        command: [ bash ]
+        source: |
+          echo "cwd: $(pwd)"
+          echo "ls /work: $(ls -l /work)"

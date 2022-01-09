@@ -17,7 +17,7 @@ jobs:
           echo "Helm: $(helm version)"
           echo "Kind: $(kind version)"
       - name: Create Cluster
-        run: kind create cluster
+        run: kind create cluster --config <(scripts/kind-config.sh)
       - name: Kube Status
         run: |
           echo "Kubectl Context:" $(kubectl config current-context)
@@ -30,3 +30,7 @@ jobs:
         run: |
           ./helm-package.sh --project argo --version 1
           ./helm-deploy.sh --project argo --version 1
+      - name: Run Example Job
+        run: |
+          kubectl apply -n argo -f examples/simple-nodejs-workflow.yml
+          scripts/argo-submit.sh simple-nodejs-workflow
