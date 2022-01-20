@@ -52,3 +52,12 @@ and run:
 cd helm/argo
 helm dep update
 ```
+
+## Change Kubectl Context
+
+Incase kubectl was used with another Kubernetes cluster, run:
+
+
+```
+kubectl config use-context kind-kind
+```
