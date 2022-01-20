@@ -24,7 +24,7 @@ kind create cluster --config <(scripts/kind-config.sh)
 ## Inspect Argo UI
 
 ```
-kubectl -n argo port-forward svc/argo-argo-workflows-server 2746:80
+kubectl --context kind-argo -n argo port-forward svc/argo-argo-workflows-server 2746:80
 open http://localhost:2746
 ```
 
@@ -40,7 +40,7 @@ scripts/argo-token.sh
 ### Cleanup Kubernetes Cluster
 
 ```
-kind delete cluster
+kind delete cluster --name argo
 ```
 
 ### Update Helm Dependencies
@@ -51,13 +51,4 @@ and run:
 ```
 cd helm/argo
 helm dep update
-```
-
-## Change Kubectl Context
-
-Incase kubectl was used with another Kubernetes cluster, run:
-
-
-```
-kubectl config use-context kind-kind
 ```

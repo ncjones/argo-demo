@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 env=local
+context=kind-argo
 project=
 version=
 
@@ -20,6 +21,10 @@ while [[ $# -gt 0 ]]; do
     --version)
       shift
       version="$1"
+    ;;
+    --context)
+      shift
+      context="$1"
     ;;
   esac
   shift
@@ -49,6 +54,7 @@ if [ ! -f "${package}" ]; then
 fi
 
 helm upgrade "${project}" "${package}" \
+  --kube-context "${context}" \
   -f "helm/${project}/${env}-values.yaml" \
   --install \
   --wait \
